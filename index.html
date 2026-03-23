@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyadarshani Shewale - Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Priyadarshani Shewale, a Full Stack Developer specializing in React, TypeScript, APIs, and Mobile.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23050505' stroke='%2387adff' stroke-width='6'/><text x='50' y='72' font-size='70' text-anchor='middle' fill='%2387adff' font-family='sans-serif' font-weight='bold'>P</text></svg>">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#050505',
+                        primary: '#87adff',
+                        secondary: '#9093ff',
+                        tertiary: '#69daff',
+                        'surface-lowest': '#0A0A0A',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(0,111,240,0.15) 0%, transparent 70%)',
+                        'primary-gradient': 'linear-gradient(135deg, #87adff 0%, #6f9fff 100%)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(38, 38, 38, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(119, 117, 117, 0.15);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(90deg, #87adff, #69daff, #9093ff, #87adff);
+            background-size: 300% 100%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: borderSpin 4s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .glass-card:hover {
+            border-color: transparent;
+            box-shadow: 0 0 40px rgba(105, 218, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        @keyframes borderSpin {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(119, 117, 117, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #87adff 0%, #6f9fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f3f;
+        }
+
+        ::selection {
+            background: rgba(135, 173, 255, 0.3);
+            color: #87adff;
+        }
+
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .orb-blur {
+            filter: blur(100px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #87adff 0%, #6f9fff 100%);
+            color: #050505;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(135, 173, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 30px rgba(135, 173, 255, 0.5);
+            transform: scale(1.02);
+            color: #050505;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: #87adff;
+            background: rgba(135, 173, 255, 0.05);
+            color: #87adff;
+            transform: scale(1.02);
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(135, 173, 255, 0), rgba(135, 173, 255, 0.3), rgba(135, 173, 255, 0));
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line::before {
+                left: 20px;
+                transform: none;
+            }
+
+            .timeline-item-right,
+            .timeline-item-left {
+                padding-left: 50px !important;
+                padding-right: 0 !important;
+                width: 100% !important;
+                text-align: left !important;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-dot {
+                left: 20px !important;
+                transform: translateX(-50%) !important;
+            }
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #87adff;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#"
+                class="font-display font-bold text-xl tracking-tight text-white hover:text-primary transition-colors">
+                PRIYADARSHANI SHEWALE
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-5 text-gray-400">
+                <a href="https://github.com/PriyadarshaniShewale" target="_blank" title="GitHub"
+                    class="hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined icon-fill text-[24px]">code</span>
+                </a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn"
+                    class="hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined icon-fill text-[24px]">terminal</span>
+                </a>
+                <a href="https://leetcode.com/u/paripriya173/" target="_blank" title="LeetCode"
+                    class="hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined icon-fill text-[24px]">data_object</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-gray-300 hover:text-white" id="mobile-menu-btn">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div class="md:hidden hidden absolute top-20 left-0 w-full glass-card border-t border-b-0 border-x-0"
+            id="mobile-menu">
+            <div class="flex flex-col py-4 px-6 space-y-4 text-gray-300">
+                <a href="#about" class="nav-link mobile-link">About</a>
+                <a href="#experience" class="nav-link mobile-link">Experience</a>
+                <a href="#projects" class="nav-link mobile-link">Projects</a>
+                <a href="#skills" class="nav-link mobile-link">Skills</a>
+                <a href="#education" class="nav-link mobile-link">Education</a>
+                <a href="#contact" class="nav-link mobile-link">Contact</a>
+                <div class="flex space-x-5 pt-4 border-t border-gray-800">
+                    <a href="https://github.com/PriyadarshaniShewale" target="_blank" title="GitHub"
+                        class="hover:text-primary"><span class="material-symbols-outlined icon-fill">code</span></a>
+                    <a href="https://linkedin.com" target="_blank" title="LinkedIn" class="hover:text-primary"><span
+                            class="material-symbols-outlined icon-fill">terminal</span></a>
+                    <a href="https://leetcode.com/u/paripriya173/" target="_blank" title="LeetCode"
+                        class="hover:text-primary"><span
+                            class="material-symbols-outlined icon-fill">data_object</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[600px] py-20 flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Glow Base -->
+        <div class="absolute inset-0 bg-hero-glow z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+
+            <!-- Left Content -->
+            <div class="space-y-6">
+                <div class="text-[#87adff] font-bold tracking-wide">
+                    Welcome to my portfolio
+                </div>
+
+                <h1
+                    class="font-display text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight text-white shadow-sm">
+                    Hi, I'm <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Priyadarshani</span>
+                </h1>
+
+                <h2 class="text-gray-300 text-xl font-medium pt-2">
+                    Associate Software Developer
+                </h2>
+
+                <p class="text-gray-400 text-lg leading-relaxed max-w-xl font-light pt-2">
+                    I craft beautiful, intuitive web and mobile applications using modern technologies like React,
+                    TypeScript,
+                    Node.js APIs, and Flutter, blending clean system architecture with delightful user experiences.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                    <a href="#projects" class="btn-primary px-8 py-3.5 rounded-xl flex items-center gap-2 text-sm">
+                        View My Work
+                    </a>
+                    <a href="#contact"
+                        class="btn-outline px-8 py-3.5 rounded-xl border border-white/20 flex items-center gap-2 hover:bg-white/5 text-sm">
+                        Hire me
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-4 pt-4">
+                    <a href="https://github.com/PriyadarshaniShewale" target="_blank"
+                        class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary/50 transition-colors">
+                        <span class="material-symbols-outlined icon-fill text-[20px]">code</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank"
+                        class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary/50 transition-colors">
+                        <span class="material-symbols-outlined icon-fill text-[20px]">terminal</span>
+                    </a>
+                    <a href="#contact"
+                        class="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary/50 transition-colors">
+                        <span class="material-symbols-outlined icon-fill text-[20px]">mail</span>
+                    </a>
+
+                    <div class="w-px h-8 bg-white/10 mx-2 hidden sm:block"></div>
+
+                    <a href="Priyadarshani_Shewale_No_mobile.pdf" download="Priyadarshani_Resume.pdf"
+                        class="group relative inline-flex items-center justify-center gap-2 px-6 py-2.5 glass-card rounded-full transition-all duration-500 hover:shadow-[0_0_20px_rgba(135,173,255,0.2)]">
+                        <span
+                            class="relative z-10 text-sm font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary group-hover:text-white transition-colors duration-300">Resume</span>
+                        <span
+                            class="material-symbols-outlined relative z-10 text-primary group-hover:text-white group-hover:translate-y-[2px] transition-all duration-300 text-[18px]">download</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Visual -->
+            <div class="relative hidden lg:flex justify-center items-center h-[500px]">
+                <!-- Large glowing orb behind -->
+                <div
+                    class="absolute w-[400px] h-[400px] bg-primary/20 rounded-full orb-blur mix-blend-screen animate-pulse-slow">
+                </div>
+                <div class="absolute w-[300px] h-[300px] bg-secondary/20 rounded-full orb-blur mix-blend-screen translate-x-20 -translate-y-20 animate-pulse-slow"
+                    style="animation-delay: 1s;"></div>
+
+                <!-- Rotating Grid of Glass Cards -->
+                <div class="grid grid-cols-3 gap-4 rotate-12 animate-float">
+                    <!-- Tech Icons -->
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-zinc-900/50 hover:border-primary/50 transition-colors">
+                        <span class="material-symbols-outlined icon-fill text-3xl text-primary">phone_android</span>
+                    </div>
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-zinc-900/50 hover:border-secondary/50 transition-colors translate-y-8">
+                        <span class="material-symbols-outlined icon-fill text-3xl text-secondary">database</span>
+                    </div>
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-zinc-900/50 hover:border-tertiary/50 transition-colors translate-y-16">
+                        <span class="material-symbols-outlined icon-fill text-3xl text-tertiary">cloud</span>
+                    </div>
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-zinc-900/50 hover:border-white/50 transition-colors">
+                        <span class="material-symbols-outlined text-3xl text-gray-300">code</span>
+                    </div>
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-white/5 border-primary/30 shadow-[0_0_30px_rgba(135,173,255,0.2)] translate-y-8 relative overflow-hidden">
+                        <!-- Simulated 'Flutter' signature center card -->
+                        <div class="absolute inset-0 bg-primary/20 blur-xl"></div>
+                        <span
+                            class="material-symbols-outlined icon-fill text-4xl text-primary relative z-10">layers</span>
+                    </div>
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-zinc-900/50 hover:border-white/50 transition-colors translate-y-16">
+                        <span class="material-symbols-outlined icon-fill text-3xl text-gray-300">bar_chart</span>
+                    </div>
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-zinc-900/50 hover:border-white/50 transition-colors">
+                        <span class="material-symbols-outlined icon-fill text-3xl text-gray-300">map</span>
+                    </div>
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-zinc-900/50 hover:border-white/50 transition-colors translate-y-8">
+                        <span class="material-symbols-outlined icon-fill text-3xl text-gray-300">lock</span>
+                    </div>
+                    <div
+                        class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center bg-zinc-900/50 hover:border-white/50 transition-colors translate-y-16">
+                        <span class="material-symbols-outlined icon-fill text-3xl text-gray-300">psychology</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <!-- Left Column -->
+                <div class="space-y-12 lg:sticky lg:top-32">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">
+                        Engineering <br><span class="text-gray-500">Mindset.</span>
+                    </h2>
+
+                    <div class="space-y-4 text-base text-gray-400 leading-relaxed font-normal pr-0 lg:pr-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary text-2xl">rocket_launch</span>
+                            <h3 class="font-display text-xl font-bold text-white">The Vision</h3>
+                        </div>
+                        <p>
+                            I build <span class="text-white font-semibold">backend systems</span> with <span
+                                class="text-primary font-medium">scalability</span> and <span
+                                class="text-white font-semibold">long-term impact</span> in mind, and I'm actively
+                            working toward creating <span class="text-secondary font-medium">AI-supported
+                                products</span> that can serve at massive scale.
+                        </p>
+                        <p>
+                            I'm particularly interested in <span class="text-white font-semibold">system design</span>,
+                            <span class="text-white font-semibold">performance</span>, and building technology that goes
+                            beyond just features to deliver <span class="text-white font-semibold">real value</span>.
+                            Furthermore, I leverage <span class="text-tertiary font-medium">AI tools</span> to
+                            drastically <span class="text-white font-semibold">increase development productivity</span>.
+                        </p>
+                        <p>
+                            I maintain razor-sharp problem-solving capabilities by consistently tackling complex <span
+                                class="text-white font-semibold">data structure problems</span> and actively
+                            participating in competitive <span
+                                class="inline-flex items-center text-white font-semibold gap-1">coding contests <span
+                                    class="material-symbols-outlined text-sm text-yellow-500 translate-y-[2px]">emoji_events</span></span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-10">
+                    <p class="text-2xl text-gray-300 leading-relaxed font-light">
+                        I approach every project as a perfect blend of robust <span
+                            class="text-primary font-medium">system architecture</span> and intuitive user experiences
+                        that solve real problems.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="glass-card p-6 rounded-2xl">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-primary text-2xl">mobile_friendly</span>
+                                <h3 class="font-display text-xl font-bold text-white">Focus</h3>
+                            </div>
+                            <p class="text-gray-400 leading-relaxed">Full-stack Web & Mobile using React, TypeScript,
+                                Node.js APIs, and Flutter/Dart.</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="material-symbols-outlined text-secondary text-2xl">lightbulb</span>
+                                <h3 class="font-display text-xl font-bold text-white">Philosophy</h3>
+                            </div>
+                            <p class="text-gray-400 leading-relaxed">Extreme ownership and customer obsession. Leading
+                                end-to-end technical initiatives to deliver scalable solutions that maximize user
+                                satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="py-16 relative overflow-hidden">
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full orb-blur mix-blend-screen pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-24">
+                <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2 block">Journey</span>
+                <h2 class="font-display text-4xl font-bold text-white">Experience</h2>
+            </div>
+
+            <div class="relative timeline-line max-w-4xl mx-auto py-10">
+
+                <!-- Experience Item 1 (Right) -->
+                <div class="relative w-full flex justify-end md:justify-end timeline-item-right mb-24">
+                    <!-- Timeline Dot -->
+                    <div
+                        class="absolute left-1/2 top-0 mt-2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(135,173,255,0.8)] border-2 border-[#050505] z-10 timeline-dot">
+                    </div>
+
+                    <div class="w-full md:w-[45%] md:pl-12 pl-0">
+                        <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+                            <span class="text-primary text-sm font-bold mb-2 block">Feb 2025 - Present</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-1">Associate Software Developer</h3>
+                            <p class="text-gray-400 mb-6 font-medium">ITS Planners & Engineers, Hyderabad</p>
+
+                            <ul class="space-y-3 text-gray-400">
+                                <li class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-primary text-sm mt-1">stop_circle</span>
+                                    <span>Built robust REST APIs with Dio in Flutter applications</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-primary text-sm mt-1">stop_circle</span>
+                                    <span>Achieved 75% reduction in GTFS workflow time (from 20 min to just 5
+                                        min)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-primary text-sm mt-1">stop_circle</span>
+                                    <span>Engineered analytics dashboard featuring 10+ ECharts visualizations</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 (Left) -->
+                <div class="relative w-full flex justify-start md:justify-start timeline-item-left">
+                    <!-- Timeline Dot -->
+                    <div
+                        class="absolute left-1/2 top-0 mt-2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-secondary shadow-[0_0_15px_rgba(144,147,255,0.8)] border-2 border-[#050505] z-10 timeline-dot">
+                    </div>
+
+                    <div class="w-full md:w-[45%] md:pr-12 pr-0 md:text-right">
+                        <div
+                            class="glass-card p-6 rounded-2xl hover:-translate-y-2 transition-transform duration-300 md:text-right text-left">
+                            <span class="text-secondary text-sm font-bold mb-2 block">May 2024 - July 2024</span>
+                            <h3 class="font-display text-xl font-bold text-white mb-1">Summer Intern</h3>
+                            <p class="text-gray-400 mb-6 font-medium">IIT Bombay IDC School of Design</p>
+
+                            <ul class="space-y-3 text-gray-400 inline-block text-left">
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="material-symbols-outlined text-secondary text-sm mt-1">stop_circle</span>
+                                    <span>Conducted deep research on 5+ authentication mechanisms (PINs, Passfaces,
+                                        pattern locks, TouchPIN)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span
+                                        class="material-symbols-outlined text-secondary text-sm mt-1">stop_circle</span>
+                                    <span>Balanced security demands with usability and real-world constraints
+                                        perfectly</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+                <div>
+                    <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2 block">Portfolio</span>
+                    <h2 class="font-display text-4xl font-bold text-white">Engineering Case Studies</h2>
+                </div>
+                <a href="https://github.com" target="_blank"
+                    class="text-gray-400 hover:text-white uppercase text-xs font-bold tracking-widest flex items-center gap-2 group transition-colors">
+                    Hover to explore technical projects
+                    <span
+                        class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-3xl overflow-hidden group">
+                    <!-- Image mockup representation -->
+                    <div class="h-48 bg-zinc-900 relative p-6 flex items-end overflow-hidden border-b border-white/5">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
+                        <!-- Abstract UI shapes for 'Daily Pulse' -->
+                        <div
+                            class="w-3/4 h-[120%] bg-zinc-800 rounded-t-3xl shadow-2xl border border-white/10 relative z-10 p-6 translate-y-8 group-hover:translate-y-4 transition-transform duration-500">
+                            <div class="flex items-center justify-between mb-4">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary material-symbols-outlined">
+                                    favorite</div>
+                                <div class="w-24 h-4 bg-zinc-700/50 rounded-full"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="w-full h-24 bg-zinc-700/30 rounded-xl relative overflow-hidden">
+                                    <!-- Simple chart lines -->
+                                    <div class="absolute bottom-4 left-4 right-4 h-12 flex items-end gap-2">
+                                        <div class="w-full bg-primary/40 rounded-t h-1/3"></div>
+                                        <div class="w-full bg-primary/60 rounded-t h-2/3"></div>
+                                        <div class="w-full bg-primary/80 rounded-t h-full"></div>
+                                        <div class="w-full bg-primary/50 rounded-t h-1/2"></div>
+                                    </div>
+                                </div>
+                                <div class="w-3/4 h-3 bg-zinc-700/50 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <!-- Badge -->
+                        <div
+                            class="absolute top-6 left-6 glass-card px-4 py-2 rounded-full z-20 flex items-center gap-2 group-hover:bg-primary/20 group-hover:border-primary/50 transition-colors">
+                            <span class="w-2 h-2 rounded-full bg-primary"></span>
+                            <span class="text-xs font-bold text-white uppercase tracking-wider">Ultra-fast UX</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <h3
+                            class="font-display text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                            Daily Pulse</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Cross-platform Flutter app with &lt;10s mood
+                            logging, Hive + Firebase sync, 7-day fl_charts analytics, and custom Android launchers.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">Flutter</span>
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">Dart</span>
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">Firebase</span>
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">fl_charts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-3xl overflow-hidden group">
+                    <div class="h-48 bg-zinc-900 relative p-6 flex items-end overflow-hidden border-b border-white/5">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-secondary/10 to-transparent"></div>
+                        <!-- Abstract UI shapes for 'Parking Logic' -->
+                        <div
+                            class="w-4/5 h-[110%] bg-zinc-800 rounded-t-3xl shadow-2xl border border-white/10 relative z-10 p-6 translate-y-8 group-hover:translate-y-4 transition-transform duration-500 ml-auto flex gap-4">
+                            <div class="w-1/2 flex flex-col gap-3 pt-4">
+                                <div
+                                    class="w-full h-12 bg-green-500/20 rounded-lg border border-green-500/30 flex items-center justify-center text-green-400 text-xs">
+                                    P2 - Available</div>
+                                <div
+                                    class="w-full h-12 bg-red-500/20 rounded-lg border border-red-500/30 flex items-center justify-center text-red-400 text-xs text-center">
+                                    P3 - Occupied<br>Car</div>
+                                <div
+                                    class="w-full h-12 bg-green-500/20 rounded-lg border border-green-500/30 flex items-center justify-center text-green-400 text-xs">
+                                    P4 - Available</div>
+                            </div>
+                            <div class="w-1/2 flex flex-col gap-3">
+                                <div
+                                    class="w-full h-16 bg-zinc-700/30 rounded-xl mb-2 flex items-center px-4 justify-between">
+                                    <span class="material-symbols-outlined text-secondary">local_parking</span>
+                                    <span class="font-bold text-white">45/100</span>
+                                </div>
+                                <div class="w-full h-8 bg-zinc-700/50 rounded-lg"></div>
+                                <div class="w-5/6 h-8 bg-zinc-700/50 rounded-lg"></div>
+                            </div>
+                        </div>
+
+                        <!-- Badge -->
+                        <div
+                            class="absolute top-6 left-6 glass-card px-4 py-2 rounded-full z-20 flex items-center gap-2 group-hover:bg-secondary/20 group-hover:border-secondary/50 transition-colors">
+                            <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                            <span class="text-xs font-bold text-white uppercase tracking-wider">Multi-floor Logic</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <h3
+                            class="font-display text-2xl font-bold text-white mb-3 group-hover:text-secondary transition-colors">
+                            Parking Lot Management System</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Java OOP system with CRUD operations, dynamic slot
+                            assignment across floors, and real-time availability for cars, bikes, and trucks.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">Java</span>
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">OOP</span>
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">CRUD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-3xl overflow-hidden group">
+                    <div class="h-48 bg-zinc-900 relative p-6 flex items-end overflow-hidden border-b border-white/5">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-tertiary/10 to-transparent"></div>
+                        <!-- Abstract UI shapes for 'JPMorgan' -->
+                        <div
+                            class="w-4/5 h-[110%] bg-zinc-800 rounded-t-3xl shadow-2xl border border-white/10 relative z-10 p-6 translate-y-8 group-hover:translate-y-4 transition-transform duration-500 mx-auto flex flex-col justify-end">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-tertiary/20 flex items-center justify-center mb-4 border border-tertiary/30">
+                                <span class="material-symbols-outlined text-tertiary text-3xl">account_balance</span>
+                            </div>
+                            <div class="w-3/4 h-4 bg-zinc-700/50 rounded-full mb-3"></div>
+                            <div class="w-1/2 h-3 bg-zinc-700/50 rounded-full mb-3"></div>
+                            <div class="w-full h-12 bg-zinc-700/30 rounded-xl mt-auto flex items-center px-4">
+                                <div class="w-full h-2 bg-tertiary/50 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <!-- Badge -->
+                        <div
+                            class="absolute top-6 left-6 glass-card px-4 py-2 rounded-full z-20 flex items-center gap-2 group-hover:bg-tertiary/20 group-hover:border-tertiary/50 transition-colors">
+                            <span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                            <span class="text-xs font-bold text-white uppercase tracking-wider">Job Simulation</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <h3
+                            class="font-display text-xl font-bold text-white mb-2 group-hover:text-tertiary transition-colors">
+                            J.P. Morgan - Software Engineering</h3>
+                        <p class="text-primary text-sm font-bold tracking-wide uppercase mb-4">Forage • Issued Mar 2024
+                        </p>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Completed practical task modules in software
+                            engineering via Forage, gaining hands-on experience with Node.js and enterprise tools.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">Node.js</span>
+                            <span
+                                class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">Architecture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-surface-lowest relative border-y border-white/5 border-dashed">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-8">
+                <span class="text-primary text-sm font-bold tracking-widest uppercase mb-2 block">Toolkit</span>
+                <h2 class="font-display text-4xl font-bold text-white">Core Competencies</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill Card 1 -->
+                <div class="glass-card p-6 rounded-2xl group">
+                    <div
+                        class="w-14 h-14 bg-zinc-900 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
+                        <span class="material-symbols-outlined text-primary text-3xl">devices</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-6">Frontend & Mobile</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-primary"></div> React, TypeScript
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-primary"></div> Next.js, Tailwind
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-primary"></div> HTML, CSS, JS
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-primary"></div> Flutter, Dart
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="glass-card p-6 rounded-2xl group">
+                    <div
+                        class="w-14 h-14 bg-zinc-900 rounded-xl flex items-center justify-center mb-6 group-hover:bg-secondary/10 transition-colors">
+                        <span class="material-symbols-outlined text-secondary text-3xl">schema</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-6">System Design & DSA</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-secondary"></div> Data Structures & Algorithms
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-secondary"></div> Low Level Design
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-secondary"></div> High Level Design
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="glass-card p-6 rounded-2xl group">
+                    <div
+                        class="w-14 h-14 bg-zinc-900 rounded-xl flex items-center justify-center mb-6 group-hover:bg-tertiary/10 transition-colors">
+                        <span class="material-symbols-outlined text-tertiary text-3xl">construction</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-6">Backend & APIs</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div> Node.js, Express
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div> REST APIs, GraphQL
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div> Java, Python, FastAPI
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div> MySQL, Docker, Git
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 4 -->
+                <div class="glass-card p-6 rounded-2xl group">
+                    <div
+                        class="w-14 h-14 bg-zinc-900 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-500/10 transition-colors">
+                        <span class="material-symbols-outlined text-purple-400 text-3xl">auto_awesome</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-6">AI & CLI Tools</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-purple-400"></div> Antigravity, Codex
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-purple-400"></div> Stitch
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-purple-400"></div> Claude
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400 group-hover:text-gray-300 transition-colors">
+                            <div class="w-1.5 h-1.5 rounded-full bg-purple-400"></div> Vibe Coding
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 relative overflow-hidden bg-black border-t border-white/5 border-dashed">
+        <div class="absolute -left-40 top-40 w-80 h-80 bg-tertiary/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-8">
+                <span class="text-tertiary text-sm font-bold tracking-widest uppercase mb-2 block">Academia</span>
+                <h2 class="font-display text-4xl font-bold text-white">Education</h2>
+            </div>
+
+            <div
+                class="glass-card rounded-[2rem] p-6 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 group">
+
+                <div class="flex-1 flex flex-col gap-6">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-tertiary/10 border border-tertiary/20 flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform duration-500">
+                        <span class="material-symbols-outlined text-4xl">school</span>
+                    </div>
+
+                    <div>
+                        <h3 class="font-display text-3xl font-bold text-white mb-2">Vellore Institute of Technology</h3>
+                        <p class="text-primary font-medium text-lg tracking-wide">B.Tech in Computer Science and
+                            Engineering</p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 mt-2">
+                        <div
+                            class="flex items-center gap-2 text-gray-400 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+                            <span class="material-symbols-outlined text-sm">calendar_month</span>
+                            <span>Class of 2025</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-gray-400 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+                            <span class="material-symbols-outlined text-sm">location_on</span>
+                            <span>Vellore, India</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-tertiary bg-tertiary/10 px-4 py-2 rounded-full border border-tertiary/20">
+                            <span class="material-symbols-outlined text-sm">school</span>
+                            <span class="font-bold tracking-wide">9.14 CGPA</span>
+                        </div>
+                    </div>
+
+                    <!-- Courses Tags -->
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <h4 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Relevant Coursework
+                        </h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 border border-white/5 rounded-xl text-sm text-gray-300 transition-colors cursor-default">Operating
+                                Systems</span>
+                            <span
+                                class="px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 border border-white/5 rounded-xl text-sm text-gray-300 transition-colors cursor-default">Database
+                                Management</span>
+                            <span
+                                class="px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 border border-white/5 rounded-xl text-sm text-gray-300 transition-colors cursor-default">Computer
+                                Networks</span>
+                            <span
+                                class="px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 border border-white/5 rounded-xl text-sm text-gray-300 transition-colors cursor-default">Machine
+                                Learning</span>
+                            <span
+                                class="px-4 py-2 bg-zinc-800/50 hover:bg-zinc-700/50 border border-white/5 rounded-xl text-sm text-gray-300 transition-colors cursor-default">Computer
+                                Architecture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">Let's build something <span
+                    class="text-gradient">delightful.</span></h2>
+            <p class="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">Available for exciting opportunities at the
+                intersection of engineering and design.</p>
+
+            <form action="https://formsubmit.co/paripriya173@gmail.com" method="POST"
+                class="glass-card p-6 md:p-6 rounded-3xl max-w-2xl mx-auto text-left space-y-6 relative overflow-hidden">
+                <!-- Inner glow -->
+                <div
+                    class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none">
+                </div>
+
+                <!-- ⚠️ IMPORTANT: Replace your@email.com above with your actual email address! -->
+                <input type="hidden" name="_subject" value="New message from Portfolio!">
+                <!-- <input type="hidden" name="_captcha" value="false"> --> <!-- Uncomment to disable captcha -->
+
+                <div class="grid md:grid-cols-2 gap-6 relative z-10">
+                    <div class="space-y-2">
+                        <label for="name" class="text-xs font-bold text-gray-400 uppercase tracking-wider">Full
+                            Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-colors"
+                            placeholder="Aarav Gupta">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="email" class="text-xs font-bold text-gray-400 uppercase tracking-wider">Email
+                            Address</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-colors"
+                            placeholder="aarav@example.com">
+                    </div>
+                </div>
+
+                <div class="space-y-2 relative z-10">
+                    <label for="message"
+                        class="text-xs font-bold text-gray-400 uppercase tracking-wider">Message</label>
+                    <textarea id="message" name="message" rows="4" required
+                        class="w-full bg-zinc-900/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-colors resize-none"
+                        placeholder="Let's talk about..."></textarea>
+                </div>
+
+                <button type="submit"
+                    class="btn-primary w-full py-4 rounded-xl flex items-center justify-center gap-2 group relative z-10 mt-4">
+                    Send Message
+                    <span
+                        class="material-symbols-outlined text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">send</span>
+                </button>
+            </form>
+
+            <div class="mt-16 flex flex-wrap justify-center gap-6 text-gray-400 text-sm">
+                <a href="mailto:priyadarshani.s173@gmail.com"
+                    class="flex items-center gap-2 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-xl">mail</span>
+                    priyadarshani.s173@gmail.com
+                </a>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-xl">location_on</span>
+                    India
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5 relative z-10 bg-black">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-gray-500 text-sm font-medium tracking-wide uppercase">© 2026 Priyadarshani Shewale. Built
+                with intent.</p>
+
+            <div class="flex items-center space-x-6 text-sm font-bold text-gray-400 tracking-wider">
+                <a href="https://github.com" class="hover:text-white transition-colors">GITHUB</a>
+                <a href="https://linkedin.com" class="hover:text-white transition-colors">LINKEDIN</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const navbar = document.getElementById('navbar');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.contains('hidden');
+            mobileBtn.innerHTML = `<span class="material-symbols-outlined text-3xl">${isHidden ? 'menu' : 'close'}</span>`;
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileBtn.innerHTML = `<span class="material-symbols-outlined text-3xl">menu</span>`;
+            });
+        });
+
+        // Navbar scroll styling
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg', 'bg-black/80');
+                navbar.classList.remove('bg-black/40');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-black/80');
+                navbar.classList.add('bg-black/40');
+            }
+        });
+    </script>
+</body>
+
+</html>
