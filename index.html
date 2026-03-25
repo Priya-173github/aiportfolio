@@ -275,7 +275,7 @@
         </div>
 
         <!-- Mobile Menu Panel -->
-        <div class="md:hidden hidden absolute top-20 left-0 w-full glass-card border-t border-b-0 border-x-0"
+        <div class="md:hidden hidden absolute top-20 left-0 w-full bg-[#050505] border-b border-white/10 shadow-2xl pb-4"
             id="mobile-menu">
             <div class="flex flex-col py-4 px-6 space-y-4 text-gray-300">
                 <a href="#about" class="nav-link mobile-link">About</a>
@@ -1023,6 +1023,14 @@
             mobileMenu.classList.toggle('hidden');
             const isHidden = mobileMenu.classList.contains('hidden');
             mobileBtn.innerHTML = `<span class="material-symbols-outlined text-3xl">${isHidden ? 'menu' : 'close'}</span>`;
+            
+            if (!isHidden) {
+                navbar.classList.add('bg-[#050505]');
+                navbar.classList.remove('glass-nav');
+            } else {
+                navbar.classList.remove('bg-[#050505]');
+                navbar.classList.add('glass-nav');
+            }
         });
 
         mobileLinks.forEach(link => {
