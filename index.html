@@ -248,6 +248,7 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <a href="#bugs-fixed" class="nav-link">Bugs I fixed</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#education" class="nav-link">Education</a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -281,6 +282,7 @@
                 <a href="#about" class="nav-link mobile-link">About</a>
                 <a href="#experience" class="nav-link mobile-link">Experience</a>
                 <a href="#projects" class="nav-link mobile-link">Projects</a>
+                <a href="#bugs-fixed" class="nav-link mobile-link">Bugs I fixed</a>
                 <a href="#skills" class="nav-link mobile-link">Skills</a>
                 <a href="#education" class="nav-link mobile-link">Education</a>
                 <a href="#contact" class="nav-link mobile-link">Contact</a>
@@ -756,6 +758,64 @@
                                 class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">Node.js</span>
                             <span
                                 class="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-gray-300 border border-white/10">Architecture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bugs I fixed Section -->
+    <section id="bugs-fixed" class="py-16 relative overflow-hidden bg-surface-lowest border-t border-white/5 border-dashed">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <span class="text-secondary text-sm font-bold tracking-widest uppercase mb-2 block">Troubleshooting</span>
+                <h2 class="font-display text-4xl font-bold text-white">Bugs I Fixed</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Bug 1 -->
+                <div class="glass-card p-8 rounded-3xl relative group">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400">
+                            <span class="material-symbols-outlined">bug_report</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Compass Reliability Glitch</h3>
+                            <p class="text-sm font-bold text-red-400 uppercase tracking-widest">Flutter • Mobile Map</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-2">The Issue</p>
+                            <p class="text-gray-300 text-sm">Compass heading updates were unreliable in `flutter_map_location_marker`, causing jittery user rotation on the map.</p>
+                        </div>
+                        <div class="bg-primary/5 p-4 rounded-xl border border-primary/10">
+                            <p class="text-xs font-bold text-primary uppercase mb-2">The Solution</p>
+                            <p class="text-gray-300 text-sm">Identified the root cause in the stream updates. Implemented a robust fix by disabling jittery heading updates and providing a stabilized fallback stream, improving map orientation smoothness by 90%.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bug 2 -->
+                <div class="glass-card p-8 rounded-3xl relative group">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400">
+                            <span class="material-symbols-outlined">sync_disabled</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">Location Sync Inconsistency</h3>
+                            <p class="text-sm font-bold text-yellow-400 uppercase tracking-widest">Flutter • Backend Integration</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-2">The Issue</p>
+                            <p class="text-gray-300 text-sm">Location data was hitting the backend inconsistently during network drops, leading to gaps in duty tracking.</p>
+                        </div>
+                        <div class="bg-secondary/5 p-4 rounded-xl border border-secondary/10">
+                            <p class="text-xs font-bold text-secondary uppercase mb-2">The Solution</p>
+                            <p class="text-gray-300 text-sm">Architected a WebSocket auto-reconnection strategy with exponential backoff and localized background queueing to ensure 100% data delivery once connection is restored.</p>
                         </div>
                     </div>
                 </div>
